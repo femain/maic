@@ -1,0 +1,874 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+       <link href=" {% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+   <!-- Custom CSS -->
+       <link href=" {% static 'css/sb-admin.css' %}" rel="stylesheet">  
+       <!-- Morris Charts CSS -->
+       <link href=" {% static 'css/plugins/morris.css' %}" rel="stylesheet">
+       <!-- Custom Fonts -->
+       {% comment %} <link href=" {% static 'css/calendered.css' %}" rel="stylesheet">   {% endcomment %}
+       <link href=" {% static 'css/now-ui-dashboard.css' %}" rel="stylesheet">  
+       {% comment %} <link href=" {% static 'css/form-elements.css' %}" rel="stylesheet">   {% endcomment %}
+
+       <link href=" {% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+       
+       <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'> 
+      
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+       <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <title>VerifyNurse Dashboard</title>
+</head>
+
+<body>
+
+<!-- Top container -->
+ {% include "includes/navigation3.html" %}
+{% block content %}
+
+
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+       
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                       
+            <h1>Nurse Profiles</h1>
+
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> Generate Nurse Reports
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+     
+                <!-- /.row -->
+
+             
+                <!-- /.row -->
+                <form method="get" action= "{% url 'dashboard'  %}">
+                    {% csrf_token %}
+
+                      <div class="row">
+                    <div class="col-lg-12">
+                  <input type="text" value="" class="form-control" placeholder="Search...">
+                       
+
+                       
+                           </div>
+                </div>
+<hr>
+                  <div class="row">
+                    <div class="col-lg-12">
+                    <div class="col-lg-2">
+                    FILTER
+                    </div>
+                    <div class="col-lg-10">
+
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    
+
+
+     <div class="carousel-item active">
+
+                <aside class="profile-card">
+  <header>
+    <!-- here’s the avatar -->
+    <a target="_blank" href="#">
+      {% comment %} <img src="images/{{ profile.user_pix.url }}" class="hoverZoomLink"> {% endcomment %}
+      <img src="{% static 'lagnurse/nursebg2.jpeg' %}" class="hoverZoomLink">
+
+    </a>
+
+    <!-- the username -->
+    <h1>
+            Name:{{ profile.user.first_name }} {{ profile.user.last_name }} 
+          </h1>
+
+    <!-- and role or location -->
+    <h2>
+            ID Code:  {{ profile.UserLocation.address }} 
+          </h2>
+
+  </header>
+
+  <!-- bit of a bio; who are you? -->
+  
+<div class="profile-bio">
+    <p>
+Phone:  {{ profile.phone_number }}
+    </p>
+    <p>
+     <label>Date of Birth</label>| 
+                        <label>Gender</label>
+                        {{ profile.gender }} 
+    </p>
+     <p>
+                        <label>Current Employer</label>
+                        {{ profile.date_birth }} | 
+                        <label>Employment Date</label>
+                        {{ profile.gender }} 
+                      </p>
+                       <p>
+                        <label>Work Address</label>             
+                      {{ profile.UserLocation.address }} |
+                       <label>City</label>             
+                      {{ profile.UserLocation.city }}   
+                    </p>
+                      <p>
+                        <label>LGA/LCDA</label>             
+                      {{ profile.UserLocation.address }} |
+                       <label>State/Region</label>             
+                      {{ profile.UserLocation.city }}   
+                        <label>Location</label>      
+                      <canvas id="">
+
+                      {{ profile.UserLocation.location }}
+      </canvas>
+                    </p>
+
+  </div>
+  <!-- some social links to show off -->
+  <ul class="profile-social-links">
+    
+    <li>
+<button type="submit" class="btn btn-info btn-block">View Employment History</button>     
+    </li>
+    <li>
+  <button type="submit" class="btn btn-info btn-block">View Qualifications & Trainings</button>
+    
+    </li>
+  </ul>
+</aside>
+                </div>
+
+
+    
+
+
+     <div class="carousel-item">
+       <div class="profile-card">
+  <header>
+    <!-- here’s the avatar -->
+    <a target="_blank" href="#">
+      {% comment %} <img src="images/{{ profile.user_pix.url }}" class="hoverZoomLink"> {% endcomment %}
+      <img src="{% static 'lagnurse/child.jpg' %}" class="hoverZoomLink">
+
+    </a>
+
+    <!-- the username -->
+    <h1>
+            Name:{{ profile.user.first_name }} {{ profile.user.last_name }} 
+          </h1>
+
+    <!-- and role or location -->
+    <h2>
+            ID Code:  {{ profile.UserLocation.address }} 
+          </h2>
+
+  </header>
+
+  <!-- bit of a bio; who are you? -->
+  
+<div class="profile-bio">
+    <p>
+Phone:  {{ profile.phone_number }}
+    </p>
+    <p>
+     <label>Date of Birth</label>| 
+                        <label>Gender</label>
+                        {{ profile.gender }} 
+    </p>
+     <p>
+                        <label>Current Employer</label>
+                        {{ profile.date_birth }} | 
+                        <label>Employment Date</label>
+                        {{ profile.gender }} 
+                      </p>
+                       <p>
+                        <label>Work Address</label>             
+                      {{ profile.UserLocation.address }} |
+                       <label>City</label>             
+                      {{ profile.UserLocation.city }}   
+                    </p>
+                      <p>
+                        <label>LGA/LCDA</label>             
+                      {{ profile.UserLocation.address }} |
+                       <label>State/Region</label>             
+                      {{ profile.UserLocation.city }}   
+                        <label>Location</label>      
+                      <canvas id="">
+
+                      {{ profile.UserLocation.location }}
+      </canvas>
+                    </p>
+
+  </div>
+  <!-- some social links to show off -->
+  <ul class="profile-social-links">
+    
+    <li>
+<button type="submit" class="btn btn-info btn-block">View Employment History</button>     
+    </li>
+    <li>
+  <button type="submit" class="btn btn-info btn-block">View Qualifications & Trainings</button>
+    
+    </li>
+  </ul>
+</div>
+    </div>
+
+
+    <div class="carousel-item">
+     <div class="card">
+
+      
+    </li>
+  </ul>
+
+                    </div>
+</aside>{% comment %} <aside class="profile-card"> {% endcomment %}
+ 
+                    <div class="card-img-top ">
+                        <img class="img-fluid" src="{% static 'lagnurse/nursebg.jpeg' %}" alt="Carousel 3">
+                    </div>
+                    <div class="card-block p-t-2">
+                        <h1>
+            Name:{{ profile.user.first_name }} {{ profile.user.last_name }} 
+          </h1>
+
+    <!-- and role or location -->
+    <h2>
+            ID Code:  {{ profile.UserLocation.address }} 
+          </h2>
+
+  </header>
+
+  <!-- bit of a bio; who are you? -->
+  
+<div class="profile-bio">
+    <p>
+Phone:  {{ profile.phone_number }}
+    </p>
+    <p>
+     <label>Date of Birth</label>| 
+                        <label>Gender</label>
+                        {{ profile.gender }} 
+    </p>
+     <p>
+                        <label>Current Employer</label>
+                        {{ profile.date_birth }} | 
+                        <label>Employment Date</label>
+                        {{ profile.gender }} 
+                      </p>
+                       <p>
+                        <label>Work Address</label>             
+                      {{ profile.UserLocation.address }} |
+                       <label>City</label>             
+                      {{ profile.UserLocation.city }}   
+                    </p>
+                      <p>
+                        <label>LGA/LCDA</label>             
+                      {{ profile.UserLocation.address }} |
+                       <label>State/Region</label>             
+                      {{ profile.UserLocation.city }}  | 
+                        <label>Location</label>      
+                      <canvas id="">
+
+                      {{ profile.UserLocation.location }}
+      </canvas>
+                    </p>
+
+  </div>
+  <!-- some social links to show off -->
+  <ul class="profile-social-links">
+    
+    <li>
+<button type="submit" class="btn btn-info btn-block">View Employment History</button>     
+    </li>
+    <li>
+  <button type="submit" class="btn btn-info btn-block">View Qualifications & Trainings</button>
+    
+
+                </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+           </div>
+                </div>
+                </div>
+
+
+
+
+
+
+
+
+                <!-- /.row -->
+              </form>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+<style>
+{% comment %} html {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background: #bcdee7 url("../img/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  position: fixed;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  font: normal 14px/1.618em "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+body:before {
+  content: "";
+  height: 0px;
+  padding: 0px;
+  border: 130em solid #313440;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  z-index: 2;
+  display: block;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 2.3s linear forwards;
+  animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 2.3s linear forwards;
+} 
+{% endcomment %}
+
+h1,
+h2 {
+  font-weight: 500;
+  margin: 0px 0px 5px 0px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 16px;
+}
+
+p {
+  margin: 0px;
+}
+
+.profile-card {
+  background: #FFB300;
+  width: 56px;
+  height: 56px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 70px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+  -webkit-animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+  animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+
+.profile-card header {
+  width: 179px;
+  height: 280px;
+  padding: 40px 20px 30px 20px;
+  display: inline-block;
+  float: left;
+  border-right: 2px dashed #EEEEEE;
+  background: #FFFFFF;
+  color: #000000;
+  margin-top: 50px;
+  opacity: 0;
+  text-align: center;
+  -webkit-animation: moveIn 1s 3.1s ease forwards;
+  animation: moveIn 1s 3.1s ease forwards;
+}
+
+.profile-card header h1 {
+  color: #FF5722;
+}
+
+.profile-card header a {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  margin: 25px 30px;
+}
+
+.profile-card header a:after {
+  position: absolute;
+  content: "";
+  bottom: 3px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  border: 4px solid #FFFFFF;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  background: -webkit-linear-gradient(top, #2196F3 0%, #2196F3 50%, #FFC107 50%, #FFC107 100%);
+  background: linear-gradient(#2196F3 0%, #2196F3 50%, #FFC107 50%, #FFC107 100%);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-animation: scaleIn 0.3s 3.5s ease forwards;
+  animation: scaleIn 0.3s 3.5s ease forwards;
+}
+
+.profile-card header a > img {
+  width: 120px;
+  max-width: 100%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transition: -webkit-box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
+  -webkit-box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
+}
+
+.profile-card header a:hover > img {
+  -webkit-box-shadow: 0px 0px 0px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 0px 12px rgba(0, 0, 0, 0.1);
+}
+
+{% comment %} .profile-card .profile-bio { {% endcomment %}
+  width: 175px;
+  height: 180px;
+  display: inline-block;
+  float: right;
+  padding: 50px 20px 30px 20px;
+  background: #FFC107;
+  color: #FFB300;
+  margin-top: 50px;
+  text-align: center;
+  opacity: 0;
+  -webkit-animation: moveIn 1s 3.1s ease forwards;
+  animation: moveIn 1s 3.1s ease forwards;
+}
+
+.profile-social-links {
+  width: 218px;
+  display: inline-block;
+  float: right;
+  margin: 0px;
+  padding: 15px 20px;
+  background: #FFFFFF;
+  margin-top: 50px;
+  text-align: center;
+  opacity: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-animation: moveIn 1s 3.1s ease forwards;
+  animation: moveIn 1s 3.1s ease forwards;
+}
+
+.profile-social-links li {
+  list-style: none;
+  margin: -5px 0px 0px 0px;
+  padding: 0px;
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+
+.profile-social-links li a {
+  display: inline-block;
+  color: red;
+  width: 24px;
+  height: 24px;
+  padding: 6px;
+  position: relative;
+  overflow: hidden!important;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.profile-social-links li a i {
+  position: relative;
+  z-index: 1;
+}
+
+.profile-social-links li a img,
+.profile-social-links li a svg {
+  width: 24px;
+}
+
+@-webkit-keyframes init {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+  100% {
+    width: 56px;
+    height: 56px;
+    margin-top: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes init {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+  100% {
+    width: 56px;
+    height: 56px;
+    margin-top: 0px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes puff {
+  0% {
+    top: 100%;
+    height: 0px;
+    padding: 0px;
+  }
+  100% {
+    top: 50%;
+    height: 100%;
+    padding: 0px 100%;
+  }
+}
+
+@keyframes puff {
+  0% {
+    top: 100%;
+    height: 0px;
+    padding: 0px;
+  }
+  100% {
+    top: 50%;
+    height: 100%;
+    padding: 0px 100%;
+  }
+}
+
+@-webkit-keyframes borderRadius {
+  0% {
+    -webkit-border-radius: 50%;
+  }
+  100% {
+    -webkit-border-radius: 0px;
+  }
+}
+
+@keyframes borderRadius {
+  0% {
+    -webkit-border-radius: 50%;
+  }
+  100% {
+    border-radius: 0px;
+  }
+}
+
+@-webkit-keyframes moveDown {
+  0% {
+    top: 50%;
+  }
+  50% {
+    top: 40%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes moveDown {
+  0% {
+    top: 50%;
+  }
+  50% {
+    top: 40%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@-webkit-keyframes moveUp {
+  0% {
+    background: #FFB300;
+    top: 100%;
+  }
+  50% {
+    top: 40%;
+  }
+  100% {
+    top: 50%;
+    background: #E0E0E0;
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    background: #FFB300;
+    top: 100%;
+  }
+  50% {
+    top: 40%;
+  }
+  100% {
+    top: 50%;
+    background: #E0E0E0;
+  }
+}
+
+@-webkit-keyframes materia {
+  0% {
+    background: #E0E0E0;
+  }
+  50% {
+    -webkit-border-radius: 4px;
+  }
+  100% {
+    width: 440px;
+    height: 280px;
+    background: #FFFFFF;
+    -webkit-border-radius: 4px;
+  }
+}
+
+@keyframes materia {
+  0% {
+    background: #E0E0E0;
+  }
+  50% {
+    border-radius: 4px;
+  }
+  100% {
+    width: 440px;
+    height: 280px;
+    background: #FFFFFF;
+    border-radius: 4px;
+  }
+}
+
+@-webkit-keyframes moveIn {
+  0% {
+    margin-top: 50px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    margin-top: -20px;
+  }
+}
+
+@keyframes moveIn {
+  0% {
+    margin-top: 50px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    margin-top: -20px;
+  }
+}
+
+@-webkit-keyframes scaleIn {
+  0% {
+    -webkit-transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes ripple {
+  0% {
+    transform: scale3d(0, 0, 0);
+  }
+  50%,
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale3d(0, 0, 0);
+  }
+  50%,
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media screen and (min-aspect-ratio: 4/3) {
+  body {
+    background-size: cover;
+  }
+  body:before {
+    width: 0px;
+  }
+  @ -webkit-keyframes puff {
+    0% {
+      top: 100%;
+      width: 0px;
+      padding-bottom: 0px;
+    }
+    100% {
+      top: 50%;
+      width: 100%;
+      padding-bottom: 100%;
+    }
+  }
+  @keyframes puff {
+    0% {
+      top: 100%;
+      width: 0px;
+      padding-bottom: 0px;
+    }
+    100% {
+      top: 50%;
+      width: 100%;
+      padding-bottom: 100%;
+    }
+  }
+}
+
+@media screen and (min-height: 480px) {
+  .profile-card header {
+    width: auto;
+    height: auto;
+    padding: 30px 20px;
+    display: block;
+    float: none;
+    border-right: none;
+  }
+  .profile-card .profile-bio {
+    width: auto;
+    height: auto;
+    padding: 15px 20px 30px 20px;
+    display: block;
+    float: none;
+  }
+  .profile-social-links {
+    width: 100%;
+    display: block;
+    float: none;
+  }
+  @ -webkit-keyframes materia {
+    0% {
+      background: #E0E0E0;
+    }
+    50% {
+      -webkit-border-radius: 4px;
+    }
+    100% {
+      width: 280px;
+      height: 440px;
+      background: #FFFFFF;
+      -webkit-border-radius: 4px;
+    }
+  }
+  @keyframes materia {
+    0% {
+      background: #E0E0E0;
+    }
+    50% {
+      border-radius: 4px;
+    }
+    100% {
+      width: 380px;
+      height: 460px;
+      background: #FFFFFF;
+      background: #FF5722;
+      border-radius: 4px;
+    }
+  }
+}
+</style>
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="{% static 'js/plugins/morris/raphael.min.js' %}"></script>
+    <script src="{% static 'js/plugins/morris/morris.min.js' %}"></script>
+    <script src="{% static 'js/plugins/morris/morris-data.js' %}"></script>
+    
+
+
+
+   {% endblock content %}
+
+
+
+  <!-- End page content -->
+  {% block scripts %}
+</body>
+</html>
+{% endblock %}

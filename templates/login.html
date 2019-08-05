@@ -1,0 +1,112 @@
+{% extends "index.html" %}
+{% load staticfiles add_attr %}
+          {% block content %}
+
+ <form method="post" action="{% url 'users:login' %}">
+  {% csrf_token %}
+
+
+     <!-- <div id="bgimg-3" style="background-image: url('{% static 'dashboard/python3.png' %}')"> -->
+ 
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+    {% endfor %}
+  {% endif %}
+  <div class="top-content" id ="login">
+        	
+          <div class="container">
+               
+              <div class="row">
+        <div class="col-sm-3"></div>
+        
+                  <div class="col-sm-6" style="background-image: url('{% static 'lagnurse/girl.jpg' %}')";>
+                    
+                    <div class="form-box">
+                      <div class="form-top">
+                        <div class="form-top-left">
+                          <h3>Login </h3>
+                            <p>Enter username and password to log in:</p>
+                        </div>
+                        <div class="form-top-right">
+                          <i class="fa fa-lock"></i>
+                        </div>
+                        </div>
+                        <div class="form-bottom">
+                      <form role="form" action="" method="post" class="login-form">
+                        <div class="form-group">
+                          <label class="sr-only" for="form-username">Username</label>
+                            {% comment %} <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">  {% endcomment %}
+            {% comment %} {{login_form.username|add_attributes:"class:w3-input w3-border w3-margin-bottom w3-round-xxlarge,placeholder:Enter Username"}} {% endcomment %}
+            {{form.username|add_attributes:"class:w3-input w3-border w3-margin-bottom w3-round-xxlarge,placeholder:Enter Username"}}
+
+                          </div>
+                          <div class="form-group">
+                            <label class="sr-only" for="form-password">Password</label>
+                            {% comment %} <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">  {% endcomment %}
+              {% comment %} {{login_form.password|add_attributes:"class:w3-input w3-border w3-margin-bottom w3-round-xxlarge,placeholder:Enter Password"}} {% endcomment %}
+              {{form.password|add_attributes:"class:w3-input w3-border w3-margin-bottom w3-round-xxlarge,placeholder:Enter Passwordi"}}
+
+              <ul>
+                  {% comment %} {% if login_form.errors %} {% endcomment %}
+                  {% if form.errors %}
+
+          
+                  {% comment %} {% for field in login_form %} {% endcomment %}
+                  {% for field in form %}
+
+                    {% if field.errors %}
+                      {% for error in field.errors %}
+                        <li><a href="#id_{{ field.name }}" class="error">{{ error|escape }}</a></li>
+                      {% endfor %}
+                    {% endif %}
+          
+                  {% endfor %}
+                  {% for error in login_form.non_field_errors %}
+                          <div class="alert alert-danger">
+                              <strong>{{ error|escape }}</strong>
+                          </div>
+                      {% endfor %}
+                  {% endif %}
+                </ul>
+                          </div>
+                          <button type="submit" class="btn btn-block">Sign in!</button>
+                              </form>
+                        
+                            <div style="margin:10px;">
+                                  <a class="btn btn-link-2" href="{% url 'users:password_reset' %}">
+                                          Forgot Password
+                                  </a>
+                                  <a class="btn btn-link-2" href="{% url 'users:completer' %}">
+                                   Create Account
+                                  </a>
+                                
+
+                              </div>
+            <p class="text-center text-black">By continuing, you accept the Terms of Use and Privacy Policy</p>
+
+                    </div>
+
+                  </div>
+              
+               
+      
+                  </div>
+                  
+                  <div class="col-sm-3"></div>
+                    
+                
+              </div>
+              
+          </div>
+      
+  </div>
+
+  <!-- Footer -->
+ 
+
+    </div>
+</form>
+   {% endblock content %}
+
+

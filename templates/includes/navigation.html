@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<nav class="navbar navbar-light navbar-expand-lg navbar-dark " style="background: linear-gradient(to right, #0c2646 0%, #204065 60%, #25c3d8 100%);">
+  
+    <a href="{% url 'home' %}" class="btn btn-outline-primary btn-lg">VerifyNurse</a>
+  
+
+    <!-- Right-sided navbar links -->
+    <!-- <div class="text-align-right "> -->
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+        
+      <ul class="nav">
+
+          <li class="nav-item"><a href="{% url 'users:login' %}" class="btn btn-link-2"><i class="fa fa-user"></i> login</a></li>
+          
+        </ul>
+        </div>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+</nav>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="navbar-expand-lg" style="display:none" id="mySidebar">
+
+</nav>
+
+

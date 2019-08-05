@@ -1,0 +1,245 @@
+{% extends "dashboard.html" %}
+{% load staticfiles %}
+          {% block content %}
+
+
+
+       <link href=" {% static 'css/sb-admin.css' %}" rel="stylesheet">  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+  .carousel-inner{
+      width: 80%;
+      padding-left:550px;
+      height: 510px;
+      {% comment %} padding-top:350; {% endcomment %}
+  }
+  .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  min-width: 400px;
+  max-height: 88vh;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  font-size:15px;
+  font-weight:bolder;
+}
+
+ .card-header {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  min-width: 400px;
+  margin: auto;
+  padding: 10px;
+  text-align: left;
+  font-family: monospace;
+  background: linear-gradient( to right, #dbe6f6, #c5796d);
+  
+}
+  .nprofile{
+  
+
+  }
+  {% comment %} .nprofile header{ {% endcomment %}
+  background: #FFB300;
+  width: 56px;
+  height: 56px;
+  position: absolute;
+  left: 50%;
+  top: 50%; 
+  border-radius: 50%;
+
+  }
+
+
+.nprofile  {
+  position: absolute;
+  content: "";
+  bottom: 3px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  border: 4px solid #FFFFFF;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  background: -webkit-linear-gradient(top, #2196F3 0%, #2196F3 50%, #FFC107 50%, #FFC107 100%);
+  background: linear-gradient(#2196F3 0%, #2196F3 50%, #FFC107 50%, #FFC107 100%);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-animation: scaleIn 0.3s 3.5s ease forwards;
+  animation: scaleIn 0.3s 3.5s ease forwards;
+}
+
+.nprofile a > img {
+  width: 120px;
+  max-width: 100%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transition: -webkit-box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
+  -webkit-box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
+}
+
+
+  </style>
+
+<nav>
+
+</nav>
+
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" >
+  
+    <div class="carousel-item active col-md-4">
+       <div class="card nprofile text-center">
+                      <div class="card-header" >
+                      
+    <a target="_blank" href="#">
+
+          <img src="{% static 'lagnurse/nursebg2.jpeg' %}" class="hoverZoomLink" style="width:30%">
+    </a>
+
+          <h3>
+            Name:{{ profile.user.first_name }} {{ profile.user.last_name }} 
+          </h3>
+             <h4>
+            ID Code:  {{ profile.UserLocation.address }} 
+          </h4>            
+            </div>
+             
+               <div class="card-body">
+                <form>
+                  <p>
+ <label>Phone:</label>  {{ profile.phone_number }}
+    </p>
+    <p>
+     <label>Date of Birth</label> | 
+                        <label>Gender</label>
+                        {{ profile.gender }} 
+    </p>
+     <p>
+                        <label>Current Employer</label>
+                        {{ profile.date_birth }} | 
+                        <label>Employment Date</label>
+                        {{ profile.gender }} 
+                      </p>
+                       <p>
+                        <label>Work Address</label>             
+                      {{ profile.UserLocation.address }} |
+                       <label>City</label>             
+                      {{ profile.UserLocation.city }}   
+                    </p>
+                      <p>
+                        <label>LGA/LCDA</label>             
+                      {{ profile.UserLocation.address }} |
+                       <label>State/Region</label>             
+                      {{ profile.UserLocation.city }}   
+                        <label>Location</label>      
+                       {% comment %} <canvas id="">
+
+                      {{ profile.UserLocation.location }}
+      </canvas>  {% endcomment %}
+                    </p>
+    
+                  </div>
+                           
+                      <div class="card-footer text-center" >
+                     
+
+<button type="submit" class="btn btn-outline-info btn-block" >View Employment History</button>     
+   
+  <button type="submit" class="btn btn-outline-info btn-block" style=" margin-top: 10px;">View Qualifications & Trainings</button>
+  
+                        </div>
+
+                        </div>
+    </div>
+    <div class="carousel-item col-md-4">
+          <div class="card nprofile text-center">
+                      <div class="card-header" >
+                      
+    <a target="_blank" href="#">
+
+          <img src="{% static 'lagnurse/nursebg2.jpeg' %}" class="hoverZoomLink" style="width:30%">
+    </a>
+
+          <h3>
+            Name:{{ profile.user.first_name }} {{ profile.user.last_name }} 
+          </h3>
+             <h4>
+            ID Code:  {{ profile.UserLocation.address }} 
+          </h4>            
+            </div>
+             
+               <div class="card-body">
+                <form>
+                  <p>
+ <label>Phone:</label>  {{ profile.phone_number }}
+    </p>
+    <p>
+     <label>Date of Birth</label> | 
+                        <label>Gender</label>
+                        {{ profile.gender }} 
+    </p>
+     <p>
+                        <label>Current Employer</label>
+                        {{ profile.date_birth }} | 
+                        <label>Employment Date</label>
+                        {{ profile.gender }} 
+                      </p>
+                       <p>
+                        <label>Work Address</label>             
+                      {{ profile.UserLocation.address }} |
+                       <label>City</label>             
+                      {{ profile.UserLocation.city }}   
+                    </p>
+                      <p>
+                        <label>LGA/LCDA</label>             
+                      {{ profile.UserLocation.address }} |
+                       <label>State/Region</label>             
+                      {{ profile.UserLocation.city }}   
+                        <label>Location</label>      
+                       {% comment %} <canvas id="">
+
+                      {{ profile.UserLocation.location }}
+      </canvas>  {% endcomment %}
+                    </p>
+    
+                  </div>
+                           
+                      <div class="card-footer text-center" >
+                     
+
+<button type="submit" class="btn btn-outline-info btn-block" >View Employment History</button>     
+   
+  <button type="submit" class="btn btn-outline-info btn-block" style=" margin-top: 10px;">View Qualifications & Trainings</button>
+  
+                        </div>
+
+                        </div>
+      {% comment %} <img class="d-block w-100" src="{% static 'lagnurse/nursebg.jpeg' %}"  alt="Third slide"> {% endcomment %}
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+
+
+
+
+{% endblock content %}

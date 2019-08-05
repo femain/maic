@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+{% load staticfiles add_attr %}
+          {% block content %}
+
+
+ <form method="post" action="{% url "users:register" %}">
+     {% csrf_token %}
+
+
+        	
+            <div class="inner-bg"> 
+                <div class="container" >
+                
+                    
+                    <div class="row" style="height:450px;">
+                       
+                        
+                        <div class="col-sm-3"></div>
+                        	
+                        <div class="col-sm-6" style="background-image: url('{% static 'lagnurse/girl.jpg' %}')">
+                        	
+                        	<div class="form-box">
+                        		<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3>Register</h3>
+	                            		<p>Create Your VerifyNurse Account:</p>
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fa fa-pencil"></i>
+	                        		</div>
+	                            </div>
+	                
+                    
+                    <div class="form-bottom" style="padding-bottom: 5px; padding-top: 10px;">
+				                    <form role="form" action="" method="post" class="registration-form">
+                             
+                 
+                    
+                    <div class="form-group" style="padding-bottom: 5px; padding-top: 20px;">
+                                                            <label class="sr-only" for="form-email">Email</label>
+                {{form.email|add_attributes:"class:w3-input w3-border w3-margin-bottom w3-round,placeholder:Email"}}
+
+                    </div>
+                    
+                    <button type="submit" class="btn btn-block" style="margin-bottom:10px;">Activate Your VerifyNurse Account</button>
+          <p class="">By continuing, you accept the Terms of Use and Privacy Policy</p>
+                    
+                    </form>
+                                    <br>
+            <a href="{% url 'users:completer' %}" > <i class="fa fa-comments"></i>COMPLETER</a>
+                                    
+			                    </div>
+                        	</div>
+                        	
+                        </div>
+                        <div class="col-sm-3"></div>
+                        
+                    </div>
+                    
+                </div>
+            
+
+   
+ </div> 
+</form>
+   {% endblock content %}

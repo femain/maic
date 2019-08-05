@@ -1,0 +1,646 @@
+   {% extends "dashboard.html" %}
+{% load staticfiles  %}
+  {% comment %} {% load scheduletags %} {% endcomment %}
+          {% block content %}
+          {{ form.media }}
+
+          <div id="wrapper">
+
+ <form method="post" action= "{% url 'sendreport' %}" enctype="multipart/form-data">
+     {% csrf_token %}
+
+     <div id="page-wrapper" >
+
+      <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="row">
+     
+              <div class="col-lg-12">
+                  <h1 >
+                      Report Management
+                  </h1>
+                  <ol class="breadcrumb">
+                      <li>
+                          <i class="fa fa-dashboard"></i>  <a href= "{% url 'dashboard' %}">Dashboard</a>
+                      </li>
+                      <li class="active">
+                          <i class="fa fa-table"></i> Send Reports
+                      </li>
+                  </ol>
+              </div>
+          </div>
+             <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3" style="min-height:90px;">
+                                        <i class="fa fa-comments fa-2x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">26</div>
+                                        <div>Consultation Notes!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left"><b>Send Consult Notes </b></span>
+
+                                    <span class="pull-right"><i><button type="button"  class="fa fa-arrow-circle-right" data-toggle="modal" data-target="#consult"> </button> </i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3" style="min-height:90px;">
+                                        <i class="fa fa-tasks fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">12</div>
+                                        <div>Health Reports!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left"><b>Send Health Reports </b></span>
+
+                                    <span class="pull-right"><i><button type="button"  class="fa fa-arrow-circle-right" data-toggle="modal" data-target="#hreports"> </button> </i></span>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3" style="min-height:90px;">
+                                        <i class="fa fa-shopping-cart fa-2x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">13</div>
+                                        <div> Drugs & Health Plans</div>
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="panel-footer">
+                                    <span class="pull-left"><b>Send Health Plans </b></span>
+
+                                    <span class="pull-right"><i><button type="button"  class="fa fa-arrow-circle-right" data-toggle="modal" data-target="#hplans"> </button> </i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                                 </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3" style="min-height:90px;">
+                                        <i class="fa fa-support fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">13</div>
+                                        <div>Vaccines!</div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left"><b>Send Vaccine Reports </b></span>
+
+                                    <span class="pull-right"><i> <button type="button"  class="fa fa-arrow-circle-right" data-toggle="modal" data-target="#vaccins">
+                                            
+                                          </button></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+          <!-- /.row -->
+         
+
+         
+        <div class="modal fade" id="consult"  tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+         <div class="row">
+                <div class="col-lg-12">
+          <div class="modal-content">
+
+
+                    <div class="modal-header">
+                     <h4 >
+                        Consultation
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body">        
+                                                
+                                    <div class="panel panel-primary" style="padding:10px">
+                                            <h4 >
+                                                    Recipient
+                                                </h4>
+                            
+                            <input type="text" value="" style="margin: 1px"class="form-control" placeholder="Search with Recipient Email | Phone Number | Name | DOB">
+            
+                    <div class="row" style="padding:25px">
+                                                                <div class="col-lg-4">
+                                                                        <label>First Name</label>
+                  {{ form.receiver.first_name }}
+                                                                    </div> 
+                                                          <div class="col-lg-4">
+                                                             <label>Last Name</label>
+                  {{ form.receiver.last_name }}
+                                                        </div>                                              
+                                                          <div class="col-lg-4">
+                                                           <label>Date of Birth</label>
+                      {{ form.receiver.date_birth }}
+                                                          </div>
+                                                          </div>
+                           
+
+                         
+                                  
+                            </div>
+                       
+                           <div class="card">
+                              <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                        Presenting Complaints
+                                </h5>
+                              </div>
+                              
+                                <div class="card-body">
+                                  <div class="input-group" style="width: 100%">
+                                                {{ form.presenting_complaints }}
+                                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                              </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                              <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                        General Findings
+                                </h5>
+                              </div>
+                              
+                                <div class="card-body">
+                                  <div class="input-group" style="width: 100%">
+                                                {{ form.general_findings}}
+                                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                              </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                              <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                        Treatment Plan
+                                </h5>
+                              </div>
+                              
+                                <div class="card-body">
+                                  <div class="input-group" style="width: 100%">
+                                                {{ form.treatment_plan }}
+                                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                              </div>
+                                </div>
+                            </div>
+
+               <div class="row" style="padding:25px">
+                                                                <div class="col-lg-6">
+                                        <label>Service Date</label>
+
+                  {{ form.service_date }}
+                                                                    </div> 
+                                                          <div class="col-lg-6">
+                                            <label>Service Time</label>
+
+                  {{ form.service_time }}
+                                                        </div>                                              
+                                                     
+                                                          </div>
+                       
+                                  <div class="form-group" style="width: 90%">
+                                        <label>Upload Report</label>
+             {{ form.file_upload}} 
+          
+                                  </div>  
+                         
+                             <div class="form-group" >
+                                <label>Next Appointment Date</label>
+                                {{ form.next_appointment }}
+                             
+                          </div>
+
+<button type="submit" class="btn btn-info btn-block">Send Consultation Note</button>
+
+                         
+            
+            
+                   <div class="modal-footer">
+           
+            </div>
+
+</div>
+</div>
+            </div>
+
+            </div>
+             </div>
+
+            </div>
+
+
+              <div class="modal fade" id="hreports"  tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+         <div class="row">
+                <div class="col-lg-12">
+          <div class="modal-content">
+
+                    <div class="modal-header">
+                     <h4 >
+                            Health Reports                        
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body">        
+                                    <form method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+
+                     <div class="panel panel-primary" style="padding:10px">
+                                            <h4 >
+                                                    Recipient
+                                                </h4>
+                            
+                            <input type="text" value="" style="margin: 1px"class="form-control" placeholder="Search with Recipient Email | Phone Number | Name | DOB">
+                  {{ form.sentreport.receiver}}
+            
+                    <div class="row" style="padding:25px">
+                                                                <div class="col-lg-4">
+                                                                        <label>First Name</label>
+                  {{ form.receiver.first_name }}
+                                                                    </div> 
+                                                          <div class="col-lg-4">
+                                                             <label>Last Name</label>
+                  {{ form.receiver.last_name }}
+                                                        </div>                                              
+                                                          <div class="col-lg-4">
+                                                           <label>Date of Birth</label>
+                      {{ form.receiver.date_birth }}
+                                                          </div>
+                                                          </div>
+                              
+                            </div>
+
+                                        <div class="panel panel-primary" style="padding:10px">
+                                           
+                                <div class="form-group" style="width: 100%">
+                                        <label>Report Type</label>
+                                        <select class="form-control">
+                              {{ form.report_type }}
+                                           
+                                        </select>
+    
+                                    </div>
+                                
+                       
+                                          <div class="input-group" style="width: 100%">
+                                                <label>Report</label>
+                                                {{ form.text }}
+                                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                              </div>
+                                              <hr>
+                                           
+                                              <div class="input-group" style="width: 100%">
+                                                    <div class="row">
+                                                            <div class="col-lg-4">
+                                                                    <label>Upper Range</label>
+                                                                    {{ form.vaccine_batchnumber }}
+                                                                </div> 
+                                                      <div class="col-lg-4">
+                                                        <label>Value</label>
+                                                        {{ form.vaccine_batchnumber }}
+                                                    </div>                                              
+                                                      <div class="col-lg-4">
+                                                            <label>Lower Range</label>
+                                                            {{ form.vaccine_expirydate }}
+                                                      </div>
+                                                      </div>
+                                                          
+                                                      </div>
+                                              <hr>
+
+                                                  <div class="form-group" style="width: 100%">
+                                                        <div class="row">
+                                                                <div class="col-lg-4">
+                                                                        <label>Specimen Type</label>
+                                                                        {{ form.vaccine_batchnumber }}
+                                                                    </div> 
+                                                          <div class="col-lg-4">
+                                                            <label>Collection Date</label>
+                                                            {{ form.vaccine_batchnumber }}
+                                                        </div>                                              
+                                                          <div class="col-lg-4">
+                                                                <label>Collection Time</label>
+                                                                {{ form.vaccine_expirydate }}
+                                                          </div>
+                                                          </div>
+                                                              
+                                                          </div>
+                                                          <br>
+<button type="submit" class="btn btn-info btn-block">Send Health Report</button>
+    </form>
+
+<div class="modal-footer">
+           
+            </div>
+
+
+            </div>
+
+             </div>
+
+            </div>
+                  </div>
+
+            </div>
+             </div>
+
+            </div>               
+
+         
+          <div class="modal fade" id="hplans"  tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+         <div class="row">
+                <div class="col-lg-12">
+          <div class="modal-content">
+
+                    <div >
+                     <h4 >
+                            Health Plans                       
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body"> 
+                                     <form method="post" enctype="multipart/form-data" >
+            {% csrf_token %}           
+                                                   
+                                    <div class="panel panel-primary" style="padding:10px">
+                                            <h4 >
+                                                    Recipient
+                                                </h4>
+                            
+                            <input type="text" value="" style="margin: 1px"class="form-control" placeholder="Search with Recipient Email | Phone Number | Name | DOB">
+                  {{ form.healthplan.hplanner }}
+            
+                    <div class="row" style="padding:25px">
+                                                                <div class="col-lg-4">
+                                                                        <label>First Name</label>
+                  {{ form.healthplan.first_name }}
+                                                                    </div> 
+                                                          <div class="col-lg-4">
+                                                             <label>Last Name</label>
+                  {{ form.healthplan.last_name }}
+                                                        </div>                                              
+                                                          <div class="col-lg-4">
+                                                           <label>Date of Birth</label>
+                      {{ form.healthplan.date_birth }}
+                                                          </div>
+                                                          </div>     
+                            </div>
+                                        <div class="panel panel-primary" style="padding:10px">
+
+                                        <div class="form-group" style="width: 100%">
+                                        <label>Health Plan</label>
+                                        <select class="form-control">
+                          {{ form.health_plan  }}
+                                           
+                                        </select>
+    
+                                    </div>
+                                  
+                                     <div class="input-group" style="width: 100%">
+                                                    <label>Activity</label>                                              
+                                                <textarea class="form-control" aria-label="With textarea">
+                          {{ form.healthplan.activity }}</textarea>
+                                              </div>
+  <div class="row" style="padding:25px">
+                                                                <div class="col-lg-6">
+                                                                    <label>Target Date </label>
+                                  {{ form.healthplan.target_date }}                    
+                            
+                                                          </div> 
+                                                          <div class="col-lg-6">
+                      <label>Timing </label>
+                                      {{ form.healthplan.activity_time  }}     
+                                                        </div>                                              
+                                                     
+                                                          </div>
+                                         
+                                            
+                                                  <br>
+<button type="submit" class="btn btn-info btn-block">Send Health Plan</button>
+ </form>
+                                    </div>
+
+                               
+                        </div>
+                    </div>
+                </div>
+ </div>
+                    </div>
+                </div>
+
+
+
+ <div class="modal fade" id="vaccins"  tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+         <div class="row">
+                <div class="col-lg-12">
+          <div class="modal-content">
+                    <div class="modal-header">
+                     <h4 >
+                            Vaccine Report                     
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    <div class="modal-body"> 
+          <form method="post" enctype="multipart/form-data" >
+            {% csrf_token %}     
+                                    <div class="panel panel-primary" style="padding:10px">
+                                            <h4 >
+                                                    Recipient
+                                                </h4>
+                            
+                            <input type="text" value="" style="margin: 1px"class="form-control" placeholder="Search with Recipient Email | Phone Number | Name | DOB">
+                  {{ form.vaccinereport.vacc_taker }}
+            
+                    <div class="row" style="padding:25px">
+                                                                <div class="col-lg-4">
+                                                                        <label>First Name</label>
+                  {{ form.vacc_taker.first_name }}
+                                                                    </div> 
+                                                          <div class="col-lg-4">
+                                                             <label>Last Name</label>
+                  {{ form.vacc_taker.last_name }}
+                                                        </div>                                              
+                                                          <div class="col-lg-4">
+                                                           <label>Date of Birth</label>
+                      {{ form.vacc_taker.date_birth }}
+                                                          </div>
+                                                          </div>
+                           
+
+                         
+                                  
+                            </div>
+
+                                        <div class="panel panel-primary" style="padding:10px">
+                                                   
+                                      <div class="form-group" style="width: 100%">
+                                        <label>Vaccine</label>
+                          {{ form.vaccinereport.vaccine }}
+                                      </div>
+                                     
+
+                                          
+                                              <div class="form-group" >
+                                                <div class="row">
+                                                  <div class="col-lg-6">
+                                                    <label>Vaccine Batch Number</label>
+                                                    {{ form.vaccinereport.vaccine_batchnumber }}
+                                                </div>                                              
+                                                  <div class="col-lg-6">
+                                                        <label>Vaccine Expiry Date</label>
+                                                        {{ form.vaccinereport.vaccine_expirydate }}
+                                                  </div>
+                                                  </div>
+                                    </div>
+
+                                                   <div class="form-group" style="width: 100%">
+                                                <div class="row">
+                                                  <div class="col-lg-6">
+                                                   
+                                                     <label>Next Vaccination Date </label>
+                                  {{ form.vaccinereport.next_vacdate }}   
+                                                </div>                                              
+                                                  <div class="col-lg-6">
+                                                      
+                                                           <label>Vaccine Staff </label>
+                                      {{ form.vaccinereport.vacc_staff  }}  
+                                                  </div>
+                                      
+                                                  </div>
+                                                      
+                                                  </div>
+<button type="submit" class="btn btn-info btn-block">Send Vaccine Report</button>
+
+
+                               
+                        </div>
+                    </div>
+                </div>
+ </div>
+                    </div>
+                </div>
+  
+          <!-- /.row -->
+
+      </div>
+
+
+      </div>
+      <!-- /.container-fluid -->
+</form>
+ <div class="row">
+    
+                <div class="col-lg-12">
+                        <div class="panel panel-default" style="min-height: 380px;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Sent Reports</h3>
+                            </div>
+                            <div class="panel-body">
+                
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th> #</th>
+                                                <th>Surname</th>
+                                                <th>First Name</th>
+                                                <th>DOB</th>
+                                                <th>Report Type</th>
+                                                <th>Report Date</th>
+                                                <th>Next Appointment</th>
+                                            
+                                            </tr>
+                                        </thead>
+                    {% for sentee in senter %}
+                                     
+                                        <tbody>
+                                            <tr>
+                                                <td>{{forloop.counter}} </td>
+                                                <td>{{ sentee.sentreport.customer }}</td>
+                                                <td>  {{ sentee.sentreport.report_type }}</td>
+                                                <td>{{ sentee.sentreport.next_appointment }}</td>
+                                          
+                                            </tr>
+                
+                                        </tbody>
+                         {% endfor %}  
+
+                                    </table>
+                
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+  </div>
+  <!-- /#page-wrapper -->
+
+  
+      
+ {% if messages %}
+    {% for message in messages %}
+      <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+    {% endfor %}
+  {% endif %}
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+
+    <!-- Morris Charts JavaScript -->
+    <script src="{% static 'js/plugins/morris/raphael.min.js' %}"></script>
+    <script src="{% static 'js/plugins/morris/morris.min.js' %}"></script>
+    <script src="{% static 'js/plugins/morris/morris-data.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="{% static 'js/plugins/flot/jquery.flot.js' %}"></script>
+    <script src="{% static 'js/plugins/flot/jquery.flot.tooltip.min.js' %}"></script>
+    <script src="{% static 'js/plugins/flot/jquery.flot.resize.js' %}"></script>
+    <script src="{% static 'js/plugins/flot/jquery.flot.pie.js' %}"></script>
+    <script src="{% static 'js/plugins/flot/flot-data.js' %}"></script>
+{% comment %} <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+     {% endcomment %}
+ 
+
+   {% endblock content %}

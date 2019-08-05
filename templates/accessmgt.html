@@ -1,0 +1,193 @@
+{% extends "dashboard.html" %}
+{% load staticfiles %}
+          {% block content %}
+
+    <!-- <form method="post" action="regserv">
+     {% csrf_token %} -->
+     <!-- <form method="post" id="serviceForm" data-cities-url="{% url 'ajax_load_subgroup' %}" novalidate > -->
+    <div id="wrapper">
+
+            <form method="post" action= "{% url 'accessmgt' %}" enctype="multipart/form-data" >
+
+            {% csrf_token %}
+     <div id="page-wrapper" >
+            <div class="container-fluid" >
+     
+
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 >
+                                Access Management
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href= "{% url 'dashboard' %}">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-bar-chart-o"></i> Access Management
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <!-- Flot Charts -->
+            
+                <!-- /.row -->
+
+             
+                <!-- /.row -->
+
+                <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-person"></i> Access Management</h3>
+                                </div>
+                                <div class="panel-body">
+                                        <div class="row">
+                                                Activate staff email
+deactivate staff
+view staff task report
+only available to primary account owner
+Profile Staff:
+Cannot change Organizational Information
+can send reports to customers
+can view requests
+                                                <div class="table-responsive" style="min-height:350px;">
+                                                    <table class="table table-hover table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>SurName</th>
+                                                                <th>FirstName</th>
+                                                                <th>Date Registered</th>
+                                                                <th>Picture</th>
+                                                                <th>View Activity</th>
+                                                                <th>Activate</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>{{ reg.Service }}</td>
+                                                                <td>{{ reg.cost_denom }}{{ reg.cost }}</td>
+                                                                <td>{{ reg.days_available }}</td>
+                                                                <td>{{ reg.service_start }}</td>
+                                                                <td>{{ reg.service_end}}</td>
+                                                                <td>{{ reg.service_end}}</td>
+
+                                                            </tr>
+                                                         
+                                                        </tbody>
+                                                    </table>
+                                                
+                                                </div>
+                                            </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        
+      
+        <!-- /#page-wrapper -->
+
+    </div>
+</div>
+
+    </form>
+</div>
+
+    <!-- jQuery -->
+    <script src=" {% static 'js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src=" {% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="{% static 'js/plugins/morris/raphael.min.js' %}"></script>
+    <script src="{% static 'js/plugins/morris/morris.min.js' %}"></script>
+    <script src="{% static 'js/plugins/morris/morris-data.js' %}"></script>
+
+    <!-- Flot Charts JavaScript -->
+    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+    <script src="{% static 'js/plugins/flot/jquery.flot.js' %}"></script>
+    <script src="{% static 'js/plugins/flot/jquery.flot.tooltip.min.js' %}"></script>
+    <script src="{% static 'js/plugins/flot/jquery.flot.resize.js' %}"></script>
+    <script src="{% static 'js/plugins/flot/jquery.flot.pie.js' %}"></script>
+    <script src="{% static 'js/plugins/flot/flot-data.js' %}"></script>
+
+    <script>
+            $(function () {
+          var bindDatePicker = function() {
+               $(".date").datetimepicker({
+               format:'YYYY-MM-DD',
+                   icons: {
+                       time: "fa fa-clock-o",
+                       date: "fa fa-calendar",
+                       up: "fa fa-arrow-up",
+                       down: "fa fa-arrow-down"
+                   }
+               }).find('input:first').on("blur",function () {
+                   // check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
+                   // update the format if it's yyyy-mm-dd
+                   var date = parseDate($(this).val());
+       
+                   if (! isValidDate(date)) {
+                       //create date based on momentjs (we have that)
+                       date = moment().format('YYYY-MM-DD');
+                   }
+       
+                   $(this).val(date);
+               });
+           }
+          
+          var isValidDate = function(value, format) {
+               format = format || false;
+               // lets parse the date to the best of our knowledge
+               if (format) {
+                   value = parseDate(value);
+               }
+       
+               var timestamp = Date.parse(value);
+       
+               return isNaN(timestamp) == false;
+          }
+          
+          var parseDate = function(value) {
+               var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
+               if (m)
+                   value = m[5] + '-' + ("00" + m[3]).slice(-2) + '-' + ("00" + m[1]).slice(-2);
+       
+               return value;
+          }
+          
+          bindDatePicker();
+        });</script>
+
+   
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_category").change(function () {
+      var url = $("#serviceForm").attr("data-cities-url");  // get the url of the `load_cities` view
+      var categoryId = $(this).val();  // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'category': categoryId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_sub_group").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+  </script>
+
+{% endblock content %}

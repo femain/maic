@@ -1,0 +1,155 @@
+ {% extends "dashboard.html" %}
+{% load staticfiles %}
+          {% block content %}
+    <form method="POST" action="{% url 'verifier:verify_status'  %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+    ...
+    <input type="submit" name="ExperienceForm" value="Submit" />
+  
+      <!-- End Navbar -->
+      <div class="panel-header panel-header-sm">
+      </div>
+      <div class="header" style="margin:40px;">
+          <h4 class="title"> Qualifications and Certifications</h4>
+
+        </div>
+        <hr>
+      <div class="content container-fluid" style="margin:10px;">
+          <div class="col-md-12">
+               
+  
+              <div class="row">
+              <div class="col-md-1">
+        </div>
+                 
+              <div class="col-md-10">
+        <div class="card " style="height: 450px">
+    
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table ">
+                <thead class=" text-primary">
+                    <th>
+                        S/No
+                      </th>
+               <th>
+                Institution                    
+                  </th>
+                    <th>
+                Training Type                  
+                  </th>
+                
+                  <th>
+                Training                    
+                  </th>
+                   <th>
+               Award Date                    
+                  </th>
+                      <th>
+                Country                   
+                  </th>
+                <th>
+                    Available CPD
+                  </th>
+                
+                   <th>
+                    Status
+                  </th>
+                  <th class="text-right">
+                 Action
+                  </th>
+                </thead>
+
+          {% for invocer in invoo %}
+
+                <tbody>
+                  <tr>
+                    <td>
+                        {{forloop.counter}}
+                    </td>
+                    <td>
+                    {{ invocer.institution }}                            
+                    </td>
+                    <td>
+                    {{ invocer.qualitype }}                            
+                    </td>
+                       <td>
+                    {{ invocer.training }}                            
+                    </td>
+                       <td>
+                    {{ invocer.award_date }}                            
+                    </td>
+                     <td>
+                    {{ invocer.inst_location.country }}                            
+                    </td>
+                  <td>
+                    {{ invocer.cpd_points }}                            
+                    </td>
+                
+                       <td>
+                    {{ invocer.status}}                              
+                      </td>
+                    <td class="text-right">
+  <button class="btn btn-info btn-xs" value='Delete'><i class="fa fa-trash-o" style="font-size:48px;color:red"></i></button>
+         
+                    </td>
+        {% endfor %}  
+ARRANGE BY award DATE - LATEST TO EARLIEST
+                  </tr>
+              
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+
+        
+        <div class="col-md-1">
+          </div>
+      
+      </div>
+    </div>
+       
+   </form>        
+   <form method="POST" action="{% url 'verifier:verify_status' pk=user.pk %}" enctype="multipart/form-data">
+        {% csrf_token %}     
+    ...
+    <input type="submit" name="QualificationsForm" value="Submit" />
+</form>     
+      <footer class="footer">
+        <div class="container-fluid">
+        
+          <div class="copyright">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script>, Designed by
+            <a href="https://www.bestratedhospitals.org" target="_blank">BestRatedHospitals</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  <!--   Core JS Files   -->
+  <script src="{% static 'js/core/jquery.min.js' %}"></script>
+  <script src="{% static 'js/core/popper.min.js' %}"></script>
+  <script src="{% static 'js/core/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/plugins/perfect-scrollbar.jquery.min.js' %}"></script>
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chart JS -->
+  <script src="{% static 'js/plugins/chartjs.min.js' %}"></script>
+  <!--  Notifications Plugin    -->
+  <script src="{% static 'js/plugins/bootstrap-notify.js' %}"></script>
+  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="{% static 'js/now-ui-dashboard.min.js' %}" type="text/javascript"></script>
+  <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
+  <script src="{% static 'js/demo.js' %}"></script>
+</body>
+
+</html>
+
+{% endblock %}

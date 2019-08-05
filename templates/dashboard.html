@@ -1,0 +1,426 @@
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+       {% comment %} <link href=" {% static 'css/bootstrap.min.css' %}" rel="stylesheet">  {% endcomment %}
+   <!-- Custom CSS -->
+       <!-- Morris Charts CSS -->
+       <link href=" {% static 'css/plugins/morris.css' %}" rel="stylesheet">
+       <!-- Custom Fonts -->
+       <link href=" {% static 'css/now-ui-dashboard.css' %}" rel="stylesheet">  
+       <link href=" {% static 'css/form-elements.css' %}" rel="stylesheet"> 
+        <link href=" {% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link href=" {% static 'css/sb-admin.css' %}" rel="stylesheet">  
+
+        
+       <link href=" {% static 'css/bootstrap4.3.1.css' %}" rel="stylesheet">  
+
+      
+       {% comment %} <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>  {% endcomment %}
+      
+       {% comment %} <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> {% endcomment %}
+       {% comment %} <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"> {% endcomment %}
+       {% comment %} <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script> {% endcomment %}
+       {% comment %} <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" /> {% endcomment %}
+       {% comment %} <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet"> {% endcomment %}
+
+  {% comment %} <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> {% endcomment %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>  
+
+
+  
+    <title>VerifyNurse Dashboard</title>
+</head>
+
+<body>
+
+<!-- Top container -->
+ {% include "includes/navigation4.html" %}
+{% block content %}
+{% load widget_tweaks %}
+
+
+    <div id="wrapper" style="margin: 60px;">
+
+       <nav class="side-nav " style="margin-top: 10px; width:280px; background: linear-gradient( to right, #00d2ff, #928DAB);">
+ <div style="background-colour:#008080; text-align:center;">
+            <h2 style="margin-top:30px;"><u><b>Filter Nurse Profile</b></u></h2>
+  Count
+
+                                    
+ <div class=" col-xs-offset-1" style="margin:10px;">
+               <form method="get" action= "{% url 'dashboard'  %}">
+                    {% csrf_token %}   
+    
+    {% comment %} {{ filter.form.as_p }} {% endcomment %}
+
+  
+  {% comment %} <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Search for Nurses...."  name='q' value='{{ request.GET.q }}'>  {% endcomment %}
+
+     <div style="margin:10px;">
+
+<div style="margin:10px;">
+  <label>Nurse</label>
+  <input type="text" class="form-control" aria-label="Text input" placeholder="Search for Nurses...."  name='nurse' value='{{ request.GET.nurse }}'> 
+</div>
+
+<div style="margin:10px;">
+  <label>Age</label> 
+ <div class="form-row">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Min" name='min' value='{{ request.GET.min }}'>
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Max" name='max' value='{{ request.GET.max }}'>
+    </div>
+  </div>
+</div>
+
+<div style="margin:10px;">
+  <label>Gender</label>
+  <div class="form-row">
+    <div class="col">
+  <label class="form-check-label" for="inlineCheckbox1">M</label>
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" name='m' value='{{ request.GET.m }}'>
+
+    </div>
+    <div class="col">
+  <label class="form-check-label" for="inlineCheckbox2">F</label>
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" name='f' value='{{ request.GET.f }}'>
+    </div>
+  </div>
+  <div class="form-check form-check-inline">
+</div>
+<div class="form-check form-check-inline">
+</div>
+</div>
+
+<div style="margin:10px;">
+  <label>Home</label>
+  <input type="text" class="form-control" aria-label="Text input" placeholder="Home"  name='home' value='{{ request.GET.home }}'> 
+</div>
+
+<div style="margin:10px;">
+  <label>Work </label>
+  <input type="text" class="form-control" aria-label="Text input" placeholder="Work"  name='work' value='{{ request.GET.work }}'> 
+</div>
+
+<div style="margin:10px;">
+  <label>Specialty </label>
+  <input type="text" class="form-control" aria-label="Text input" placeholder="Specialty"  name='specialty' value='{{ request.GET.specialty }}'> 
+</div>
+
+
+  <p>  <button class="btn btn-block btn-warning" type="submit">Search</button> </p>
+  <p>            <button class="btn btn-danger btn-block">EXPORT CSV </button>  </p>
+        </div>
+		
+        </div>
+</div>
+                    </nav> 
+        <!-- Navigation -->
+       
+
+        <div id="page-wrapper" style="margin-top: 10px;">
+
+            <div class="container-fluid" >
+
+               
+  
+                <!-- /.row -->
+{% comment %}              
+<div class="input-group mb-3" style="margin-left:45px;">
+  <div class="input-group-prepend">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="submit" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter Nurse Profiles</button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">First Name</a>
+      <div role="separator" class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Last Name</a>
+      <div role="separator" class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">ID Code</a>
+      <div role="separator" class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Specialty</a>
+      <div role="separator" class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Role</a>
+      <div role="separator" class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Employer</a>
+      <div role="separator" class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#"> Employer type</a>
+      <div role="separator" class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Gender</a>
+      <div role="separator" class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Age</a>
+      <div role="separator" class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">LCDA/LGA</a>
+      <div role="separator" class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">State/Region</a>
+
+    </div>
+  </div>
+  {% endcomment %}
+
+
+</div> 
+
+                <!-- /.row -->
+                
+
+  </form>
+                 
+                  <div class="row" >
+                    <div class="col-lg-12">
+                    
+           {% comment %} <div class="container-fluid"> {% endcomment %}
+
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" >
+    <div class="carousel-item active  ">
+   {% for proffer in result_list %} 
+  {% comment %} {% for proffer in filter.qs %} {% endcomment %}
+
+    <div class="col-sm-4">
+       <div class="card nprofile ">
+                      <div class="card-header" >
+    <a target="_blank" href="#">
+
+          <img src="{{ proffer.user_pix }}"  style="width:100px; height:70px;" class="img-responsive">
+
+    </a>
+          <h4>
+            Name:{{ proffer.first_name }} {{ proffer.last_name }} 
+          </h4>
+             <h5>
+            ID Code:  {{ proffer.id_code }} 
+          </h5>   
+           
+    </div>
+             
+               <div class="card-body">
+                        <p>
+ <label>Phone:</label>  {{ proffer.phone_number }} |
+   
+     <label>Date of Birth</label>
+                        {{ proffer.date_birth }} 
+
+      | 
+                        <label>Gender</label>
+                        {{ proffer.gender }} 
+    </p>
+    <hr>
+                        <h3>Current Employer</h3>
+
+     <p>
+                        {{ proffer.workhist.organization }} | 
+                        <label>Employment Date</label>
+                        {{ proffer.workhist.start_date }} 
+                      </p>
+    <hr>
+    <div class="row">
+    <div class="col-md-6">
+
+            <h3>Employer Address</h3>             
+
+                       <p>
+                      {{ proffer.workhist.org_location.address }}, 
+                      {{ proffer.workhist.org_location.city }},   
+                      {{ proffer.workhist.org_location.lcda_lga }} LGA,
+                      {{ proffer.workhist.org_location.region }} State. 
+                    </p>
+
+    </div>
+     <div class="col-md-6">
+
+            <h3>Home Address</h3>             
+
+                       <p>
+                      {{ proffer.home.address }},
+                      {{ proffer.home.city }},   
+                      {{ proffer.home.lcda_lga }} LGA,
+                      {{ proffer.home.region }} State. 
+                    </p>
+
+    </div>
+    <hr>
+
+                       <canvas id="">
+
+                      {{ proffer.workhist.org_location.geolocat }}
+      </canvas> 
+    </div>
+
+                
+      <hr>
+                 
+                    </p>
+                  </div>
+                           
+                      <div class="card-footer text-center" >
+                     
+<p>
+<a href="{% url 'nurse_manager:nursepage' %}"<button type="submit" class="btn btn-warning  ">View Detailed Profile</button> </a>
+   
+  
+                        </div>
+
+                        </div>
+    </div>
+       {% if forloop.counter|divisibleby:1 and not forloop.last %}
+    </div>
+ <div class="carousel-item">
+       {% endif %}
+    {% endfor %}
+    </div>  
+
+
+   
+  </div>
+  
+
+
+  <a class="carousel-control-prev " href="#carouselExampleControls" role="button" data-slide="prev" >
+   <button type="button" class="btn btn-info btn-circle " data-toggle="modal" data-target=>
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+   </button>
+    <span class="sr-only">Previous</span>
+
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+   <button type="button" class="btn btn-info btn-circle " data-toggle="modal" data-target=>
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+   </button>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+  
+</div>       
+
+
+                </div>
+                </div>
+
+              {% comment %} </form> {% endcomment %}
+
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+<style>
+ .carousel-inner{
+      width: 85%;
+      padding-left:200px;
+      height: 650px;
+      {% comment %} padding-top:350; {% endcomment %}
+  }
+  .card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  min-width: 500px;
+  max-height: 110vh;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  font-size:15px;
+  font-weight:bolder;
+}
+
+ .card-header {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  min-width: 500px;
+  margin: auto;
+  padding: 10px;
+  text-align: left;
+  font-family: monospace;
+  background: linear-gradient( to right, #2980b9, #2c3e50);
+  
+}
+  .nprofile{
+  
+
+  }
+  {% comment %} .nprofile header{ {% endcomment %}
+  background: #FFB300;
+  width: 56px;
+  height: 56px;
+  position: absolute;
+  left: 50%;
+  top: 50%; 
+  border-radius: 50%;
+
+  }
+
+
+.nprofile  {
+  position: absolute;
+  content: "";
+  bottom: 3px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  border: 4px solid #FFFFFF;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  background: -webkit-linear-gradient(top, #2196F3 0%, #2196F3 50%, #FFC107 50%, #FFC107 100%);
+  background: linear-gradient(#2196F3 0%, #2196F3 50%, #FFC107 50%, #FFC107 100%);
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-animation: scaleIn 0.3s 3.5s ease forwards;
+  animation: scaleIn 0.3s 3.5s ease forwards;
+}
+
+.nprofile a > img {
+  width: 120px;
+  max-width: 100%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transition: -webkit-box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
+  -webkit-box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.06);
+}
+
+
+
+
+</style>
+
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="{% static 'js/plugins/morris/raphael.min.js' %}"></script>
+    <script src="{% static 'js/plugins/morris/morris.min.js' %}"></script>
+    <script src="{% static 'js/plugins/morris/morris-data.js' %}"></script>
+    
+
+
+
+   {% endblock content %}
+
+
+
+  <!-- End page content -->
+  {% block scripts %}
+</body>
+</html>
+{% endblock %}

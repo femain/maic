@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+{% load staticfiles add_attr %}
+          {% block content %}
+
+ <form method="post" action="{% url "users:proregister" %}">
+     {% csrf_token %}
+
+     {% if messages %}
+     {% for message in messages %}
+       <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message|safe }}</div>
+     {% endfor %}
+   {% endif %}
+ 
+           <div class="container">              
+               <div class="row">
+         <div class="col-sm-3"></div>
+         
+                   <div class="col-sm-6">
+                     
+                     <div class="form-box">
+                       <div class="form-top">
+                         <div class="form-top-left">
+                          
+                             <h3 class="text-center">SERVICE PROVIDERS</h3>
+                             <p class="text-center">Do you provide World-class Health Service? Create Your Account TODAY!!!:</p>
+                         </div>
+                         <div class="form-top-right">
+                           <i class="fa fa-lock"></i>
+                         </div>
+                         </div>
+                         <div class="form-bottom">
+                       <form role="form" action="" method="post" class="login-form">
+                     
+                           <div class="form-group">
+      
+           {{provreg_form.email|add_attributes:"class:w3-input w3-border w3-margin-bottom w3-round,placeholder:Email"}}
+           {{provreg_form.org_name|add_attributes:"class:w3-input w3-border w3-margin-bottom w3-round,placeholder:Organization"}}
+           {{provreg_form.password1|add_attributes:"class:w3-input w3-border w3-margin-bottom w3-round,placeholder:Password"}}
+           {{provreg_form.password2|add_attributes:"class:w3-input w3-border w3-margin-bottom w3-round,placeholder:Confirm Password"}}
+     <button type="submit" class="btn btn-block">Create Account!</button>
+     </div>
+   
+       <div>
+           
+             <p class="text-center text-black">By continuing, you accept the Terms of Use and Privacy Policy</p> 
+         </div>
+ </div>
+ 
+ </div>
+     </div>
+ </div>
+ <!-- Service Providers -->
+
+
+
+
+  </div>
+
+ </form>
+   {% endblock content %}

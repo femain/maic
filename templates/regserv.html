@@ -1,0 +1,98 @@
+{% extends "dashboard.html" %}
+{% load staticfiles %}
+          {% block content %}
+
+    <div id="wrapper">
+
+            <form method="post" action= "{% url 'regserv' %}" enctype="multipart/form-data" >
+
+            {% csrf_token %}
+            
+     <div id="page-wrapper" >
+              <div class="row">
+                    <div class="col-lg-12">
+                  <input type="text" value="" class="form-control" placeholder="Search...">
+                       
+                           </div>
+                </div>
+             
+              <div class="row">
+                    <div class="col-lg-12">   
+               <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+    <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                        <img class="img-fluid" src="http://i.imgur.com/EW5FgJM.png" alt="Carousel 1">
+                    </div>
+                    <div class="card-block p-t-2">
+                        <h6 class="small text-wide p-b-2">Insight</h6>
+                       VIEW AGE AT QUALIFICATION
+VIEW WORK ADDRESS
+VIEW GPS LOCATION OF WORK ADDRESS
+VIEW CURRENT AGE
+VIEW HOME ADDRESS
+VIEW EMPLOYER
+VIEW TYPE OF ORGANIZATION
+VIEW ID CODE NUMBER
+VIEW PICTURE
+GENDER
+VIEW TRAINING/WORK HISTORY/REQUEST VERIFICATION
+                    </div>
+                </div>
+    </div>
+    <div class="carousel-item">
+    <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                        <img class="img-fluid" src="http://i.imgur.com/Hw7sWGU.png" alt="Carousel 2">
+                    </div>
+                    <div class="card-block p-t-2">
+                        <h6 class="small text-wide p-b-2">Development</h6>
+                        <h2>
+                            <a href>How to Make Every Line Count.</a>
+                        </h2>
+                    </div>
+                </div>
+    </div>
+    <div class="carousel-item">
+     <div class="card">
+                    <div class="card-img-top card-img-top-250">
+                        <img class="img-fluid" src="http://i.imgur.com/g27lAMl.png" alt="Carousel 3">
+                    </div>
+                    <div class="card-block p-t-2">
+                        <h6 class="small text-wide p-b-2">Design</h6>
+                        <h2>
+                            <a href>Responsive is Essential.</a>
+                        </h2>
+                    </div>
+                </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+          </div>
+                </div>
+</div>
+
+    <!-- jQuery -->
+    <script src=" {% static 'js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src=" {% static 'js/bootstrap.min.js' %}"></script>
+    <script src=" {% static 'js/calendered.js' %}"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+
+
+
+
+{% endblock content %}

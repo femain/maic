@@ -1,0 +1,229 @@
+{% extends "landing.html" %}
+{% load staticfiles %}
+          {% block content %}
+
+ <form method="post" action="{% url 'verifier:verifiednurse'%}">
+     {% csrf_token %}
+    <!-- End Navbar -->
+
+    <div class="content container-fluid" >
+      <div class="row" style="margin-top: 100px;">
+          <div class="card card-user">
+
+    <div class="card-header">
+        <h4 class="title">Nurse Verification Status</h4>
+<a href="{% url 'payments:checkout' %}"<button type="submit" class="btn btn-outline-info ">View Verification Status</button> </a>
+
+      </div> 
+    <hr>
+
+
+
+             
+           
+
+          {% comment %} {% for profile in profiles %} {% endcomment %}
+        
+        
+
+
+      {% comment %} <p><a href="{% url 'nurse_manager:update' pk=user.pk %}" class="btn">Update</a></p> {% endcomment %}
+           
+             
+              <div class="card-deck">
+              
+                  
+                  <div class="card">
+                      <div class="card-header">
+                        <h5 class="card-title">Institution:  {{ invocer.institution }}   </h5>  
+                      </div>
+
+                      <div class="card-body">
+
+                    <p>
+                Training Type   
+                    {{ invocer.qualitype }}                            
+
+                  </p>
+                
+                  <p>
+                Training    
+                    {{ invocer.training }}                            
+
+                  </p>
+                   <p>
+               Award Date   
+                    {{ invocer.award_date }}                            
+
+                  </p>
+                      <p>
+                Country           
+                    {{ invocer.inst_location.country }}                            
+
+                  </p>
+                <p>
+                    Available CPD
+                    {{ invocer.cpd_points }}                            
+
+                  </p>
+                    </div>
+
+                      <div class="card-footer">
+                
+                   <p>
+                    Status
+                    {{ invocer.status}}                              
+
+                  </p>
+                
+                      </div>
+
+                      </div>
+                        <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Training Type  </h5>
+                          <i class="now-ui-icons design_app"></i>
+
+                          <p>Training </p>
+                    </div>
+                  </div>
+                  <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Service Review</h5>
+                            <i class="now-ui-icons ui-1_bell-53"></i>
+                            <p>Review Service Provider</p>
+
+                          </a>
+    
+                      </div>
+                    </div>
+
+                </div>
+        {% comment %} {% endfor %}   {% endcomment %}
+
+                <br>
+          {% comment %} {% for depends in depfiles %} {% endcomment %}
+                <div class="card-deck">
+                    <div class="card">
+                        <div class="card-header">
+                          <h5 class="card-title"> Organization: 
+                    {{ depends.organization }}                              
+                             </h5>
+                      </div>
+
+                        <div class="card-body">
+                      
+                       <p>
+                    Employer Type    
+                    {{ depends.employer_type }}                              
+                        </p>
+                      <p>
+                      Ownership      
+                    {{ depends.owner }}                                                                      
+                      </p>
+                          <p>
+                      Role     
+                    {{ depends.role }}                              
+                      </p>
+                        <p>
+                     Start Date    
+                    {{ depends.start_date }}                              
+                        </p>
+                          <p>
+                     End Date      
+                    {{ depends.end_date }}                              
+                        </p>
+                      
+                        </div>
+                     
+ <div class="card-footer">
+                
+                   <p>
+                    Status
+                    {{ invocer.status}}                              
+
+                  </p>
+                
+                      </div>
+                      </div>
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Invoices and Receipts</h5>
+                            <i class="now-ui-icons business_money-coins"></i>
+                            <p>Invoices</p>
+                          </a>
+                      </div>
+                    </div>
+                   
+                   
+                    <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">My Reports</h5>
+                              <i class="now-ui-icons users_circle-08"></i>
+                              <p>My Reports</p>
+                            </a>
+                        </div>
+                      </div>
+                  </div>
+                  <br>
+
+                  <div class="card-deck">
+                      <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">Dependents</h5>
+                                <i class="now-ui-icons design_bullet-list-67"></i>
+                                <p>Dependents</p>
+                              </a>
+                          </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Messages</h5>
+                                  <i class="now-ui-icons ui-1_email-85" style="size: 20px" ></i>
+                                <p>Messages</p>
+                                </a>
+                            </div>
+                          </div>
+                      <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">Cart</h5>
+                            <a href="{% url 'payments:cart' %}">
+                                <i class="now-ui-icons shopping_cart-simple "></i>
+                                <p>Cart</p>
+                              </a>
+                          </div>
+                        </div>
+                      </div>
+                 
+     
+       
+        </div>
+  </div>
+   
+
+  
+
+
+  <footer class="footer">
+      <div class="container-fluid">
+      
+        <div class="copyright">
+          &copy;
+          <script>
+            document.write(new Date().getFullYear())
+          </script>, Designed by
+          <a href="https://www.bestratedhospitals.org" target="_blank">Best Rated Hospitals</a>
+        </div>
+      </div>
+    </footer>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+
+
+
+
+
+{% endblock content %}

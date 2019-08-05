@@ -1,0 +1,81 @@
+{% extends "index.html" %}
+{% load staticfiles add_attr %}
+          {% block content %}
+
+
+ <form method="post" action="{% url "users:emailreg" %}">
+     {% csrf_token %}
+
+
+<!-- <div  id="bgimg-3" style="background-image: url('{% static 'dashboard/python3.png' %}')";> -->
+    <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                
+                    
+                    <div class="row">
+                       
+                        
+                        <div class="col-sm-3"></div>
+                        	
+                        <div class="col-sm-6">
+                        	
+                        	<div class="form-box">
+                        		<div class="form-top">
+	                        		<div class="form-top-left">
+											<div class="card-img-overlay">
+											<p class="text-uppercase font-weight-bold">  Welcome To <b>VerifyNurse</b>, The Secure Platform To Verifiying Nurses Globally </p>
+												</div>
+	
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fa fa-pencil"></i>
+	                        		</div>
+	                            </div>
+	                            <div class="form-bottom">
+				                    <form role="form" action="" method="post" class="registration-form">
+                                        {% autoescape off %}
+Hi {{ user.username }},
+Please click on the link to confirm your registration,
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+                                            <img class="card-img" src="{% static 'lagnurse/child.jpg' %}"  alt="Responsive image" >
+<br>
+                                                  
+                                        <button type="submit" class="btn btn-block">Activate Your VerifyNurse Account</button>
+
+ <label>Once You have logged in, delete this email</label>
+
+ <label>By continuing, you accept the Terms of Use and Privacy Policy</label>
+{% endautoescape %}  
+                                        
+				                    </form>
+			                    </div>
+                        	</div>
+                        	
+                        </div>
+                        <div class="col-sm-3"></div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Footer -->
+        <footer>
+        	<div class="container">
+        		<div class="row">
+        			
+        			<div class="col-sm-8 col-sm-offset-2">
+        			
+        			</div>
+        			
+        		</div>
+        	</div>
+        </footer>
+   
+<!-- </div> -->
+</form>
+   {% endblock content %}
