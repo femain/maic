@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Landing Page - Start Bootstrap Theme</title>
+  <title>Medical Assets Investment Company</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,10 +26,12 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-light bg-light static-top" style="background: linear-gradient(to right, #0c2646 0%, #204065 60%, #25c3d8 100%);"> 
+  <nav class="navbar navbar-light bg-light static-top" > 
     <div class="container">
-      <a class="navbar-brand btn btn-outline-primary" href="index.html">VerifyNurse</a>
-      <a class="btn btn-outline-primary" href="login.html">Login</a>
+        <a class="navbar-brand btn btn-primary" href="index.html">HealthInvest</a>
+      <a class="btn btn-outline-danger" href="logout.html">Logout</a>
+
+    
     </div>
   </nav>
 
@@ -38,64 +40,59 @@
  
 
   <!-- Testimonials -->
-  <section class="testimonials text-center bg-light">
+  <section class="testimonials text-center bg-light" style="background: #f9fff2;">
     <div class="container">
       <div class="row">
         <div class="col-lg-4">
         <div class="card" style="margin:7px;">
-      <h2 class="mb-5">Nurse Profile</h2>
+      <h4 class="mb-5">Organization Profile</h4>
 
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
             <img class="img-fluid rounded-circle mb-3" src="img/testimonials-1.jpg" alt="">
             <h5>Margaret Nurser</h5>
           
-                    <p>    <span>Gender</span> </p>
-                     <p>   <span>Date of Birth</span></p>
+                    <p>    <span>Organization</span> </p>
                     <p>    <span  class="font-weight-light mb-0">Phone</span></p>
-                    <p>    <span  class="font-weight-light mb-0">Platform Generated ID Code</span></p>
-
-                    <p>    <span>LASSRA Number/Residency Number</span></p>
-
-
-
+            
           </div>
-                          <button type="submit" class="btn btn-block btn-outline-primary" style="margin-bottom:5px;">Edit Profile</button>
+                          <button type="submit" class="btn btn-block btn-primary mx-auto" style="margin-bottom:5px;">Change Password</button>
 
         </div>
         </div>
      
         <div class="col-lg-8">
-        <div class="card" style="margin:7px; height:520px;">
-          <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+        
+           <h3>User Dashboard</h3>
+<div class="card-deck" style="margin:20px;">
+  <div class="card">
+    <img src="{% static 'verifynurse/avatar.png' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Manage Profile</h5>
+      <a href="editprofile.html" ><button class="btn btn-block btn-outline-info"  >Edit Profile</button></a><br/>
 
-        <div class="col-lg-6">
-            
-        <div class="card" style="margin:7px;"> 
-            <img class="img-fluid rounded-circle mb-3" src="img/testimonials-3.jpg" alt="">
+    </div>
+    
+  </div>
+  <div class="card">
+    <img src="{% static 'verifynurse/avatar.png' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+  <a href="{% url 'verifynurse:postbyuser' user.id %}"><button class="btn btn-block btn-outline-info"  >View Work Experience</button></a><br/>
 
-            <p class="font-weight-light mb-0">Work Experience</p>
-        </div>
+    </div>
+    
+  </div>
+  <div class="card">
+    <img src="{% static 'verifynurse/avatar.png' %}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Request For Funds</h5>
+    <a href="request.html" ><button class="btn btn-block btn-outline-info"  >Request Funds</button></a><br/>
+
+    </div>
+    
+  </div>
+</div> 
           </div>
-
- <div class="card" style="margin:7px;"> 
-            <p class="font-weight-light mb-0">Add Qualification</p>
-        </div>
-
-        <div class="col-lg-6">
-
-         <div class="card" style="margin:7px;"> 
-            <p class="font-weight-light mb-0">Request Verification</p>
-        </div>
-          <div class="card" style="margin:7px;"> 
-            <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
-        </div>
-          </div>
-          </div>
-
-          </div>
-
-        </div>
-        </div>
 
       </div>
     </div>
