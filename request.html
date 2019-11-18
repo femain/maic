@@ -40,9 +40,9 @@
   <section class="text-center bg-light  ">
 
 
-    <div class="overlay"></div>
+    <!-- <div class="overlay"></div> -->
     <!-- <div class="call-to-action"> -->
-    <div class="mb-5">
+    <div class="">
 
         <h4>Funding Request</h4>
       </div>
@@ -63,7 +63,7 @@
     <label>Name</label>
 <!-- restrict to 20 characters for input -->
 
-    <input type="email" class="form-control " placeholder="">
+    <input type="text" class="form-control " placeholder="">
 
               </div>
               <div class="form-group">
@@ -75,13 +75,29 @@
                <div class="form-group">
     <label>Address</label>
 
-    <input type="email" class="form-control " placeholder="">
+    <input type="address" class="form-control " placeholder="">
 
               </div>
+   
+
+                            <div class="dropdown">
+                                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Fund Category
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="#">StartUp</a>
+                                  <a class="dropdown-item" href="#">Expansion</a>
+                                  <a class="dropdown-item" href="#">Divestment</a>
+                                  <a class="dropdown-item" href="#">Operational Cost</a>
+                                  <a class="dropdown-item" href="#">Asset Acquisition</a>
+
+                                  
+                                </div>
+                              </div>
                <div class="form-group">
     <label>Fund To Be Used For</label>
 
-    <input type="email" class="form-control " placeholder="">
+    <input type="text" class="form-control " placeholder="">
 <!-- restrict to 20 characters for input -->
               </div>
           
@@ -93,8 +109,13 @@
       </div>
   
 </div>
-                  <div class="col-sm-6 " style="margin-top: 2px;";>
-                   
+                  <div class="col-sm-6 " ;>
+                     <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-info  btn-lg">Loan</button>
+                            <button type="button" class="btn btn-outline-info btn-lg">Equity</button>
+                            <button type="button" class="btn btn-outline-info btn-lg">Crowdfund</button>
+                          </div>
+
                     <div class="form-box ">
                       <div class="form-top">
   <div class="accordion" id="accordionExample">
@@ -102,7 +123,7 @@
         <div class="card-header" id="headingOne">
           <h2 class="mb-0">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <h5>Loan Sponsorship</h5>
+              <h5>Loan</h5>
 
             </button>
           </h2>
@@ -126,14 +147,14 @@
       
                                 </div>
                   <div class="form-group">
-                    <label>Sponsorship Returns</label>
+                    <label>Loan Interest</label>
     <!-- percentage picker/dropdown -->
                     <input type="email" class="form-control " placeholder="">
     
                               </div>
                             
                   <div class="form-group">
-                    <label>Sponsorship Duration</label>
+                    <label>Duration</label>
     
                     <input type="email" class="form-control " placeholder="">
     <!-- number of months picker -->
@@ -168,6 +189,9 @@
                 <div class="form-bottom">
               <form role="form" action="" method="post" class="login-form">
                   <div class="form-group">
+
+                      StartUp Equity
+                      Growth Equity
                       <label>Amount</label>
       
                       <input type="email" class="form-control " placeholder="">
