@@ -26,16 +26,17 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-light bg-light static-top" > 
-    <div class="container">
-        <a class="navbar-brand btn btn-primary" href="index.html">HealthInvest</a>
-        <a class="navbar-brand btn btn-primary" href="profile.html">Profile</a>
-      <a class="btn btn-outline-danger" href="logout.html">Logout</a>
+ 
+  <nav class="navbar navbar-light bg-light static-top" style=""> 
+      <div class="container-fluid">
+        <a class="navbar-brand " href="index.html">
+          <img class="rounded " src="img/healthinvest2.png" alt="" width="100" height="45">
+        </a>
 
-    
-    </div>
-  </nav>
-
+        <a class="btn btn-outline-primary" href="profile.html">Profile</a>
+        <a class="btn btn-outline-danger" href="logout.html">Logout</a>
+      </div>
+    </nav>
  
 
  
@@ -90,7 +91,6 @@
   </div>
   
   <div class="card">
-    <img src="{% static 'verifynurse/avatar.png' %}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Request For Funds</h5>
     <a href="request.html" ><button class="btn btn-block btn-outline-info"  >Request Funds</button></a><br/>
@@ -100,39 +100,7 @@
   </div>
 </div> 
 
-<div class="card-deck" style="margin:20px;">
 
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title"> Business Information</h5>
-  <a href="calculate.html"><button class="btn btn-block btn-outline-info"  >View
-    
-  </button></a><br/>
-<!-- after paying onboarding fee -->
-    </div>
-    
-  </div>
-  <div class="card">
-    <img src="{% static 'verifynurse/avatar.png' %}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Interest Calculator</h5>
-  <a href="calculate.html"><button class="btn btn-block btn-outline-info"  >Calculate Repayment
-    
-  </button></a><br/>
-
-    </div>
-    
-  </div>
-  <div class="card">
-    <img src="{% static 'verifynurse/avatar.png' %}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title"> </h5>
-    <a href="request.html" ><button class="btn btn-block btn-outline-info"  >Request Funds</button></a><br/>
-
-    </div>
-    
-  </div>
-</div> 
           </div>
 
       </div>
